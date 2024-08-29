@@ -29,7 +29,7 @@ def generate_password(length, special_char_count):
 def derive_key(main_password, salt):
     kdf = Scrypt(
         salt=salt,
-        length=32,  # 32 bytes = 256-bit key, solid as a rock!
+        length=32,  # 32 bytes = 256-bit key 
         n=2**14,    # CPU/memory cost factor, higher = more secure (and slower)
         r=8,        # Block size (related to parallelism)
         p=1,        # Parallelization factor
@@ -65,7 +65,7 @@ def store_password(file_path, website, encrypted_password, salt):
     with open(file_path, 'a') as file:  # Append the new entry to the file
         file.write(json.dumps(data) + "\n")  # Save each entry as a new line
 
-# Retrieve your treasure with the correct key (Load and decrypt the password)
+# Retrieve your password with the correct key (Load and decrypt the password)
 def load_password(file_path, main_password, website):
     with open(file_path, 'r') as file:
         for line in file:
